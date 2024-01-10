@@ -6,7 +6,6 @@ This project implements a gRPC server for managing books. It provides functional
 
 - Add a new book
 - Retrieve a book by its ID
-- List all books
 
 ## Technologies
 
