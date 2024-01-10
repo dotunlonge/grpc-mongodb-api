@@ -1,0 +1,35 @@
+{
+  "name": "grpc-server",
+  "version": "1.0.0",
+  "description": "A gRPC server for managing books with MongoDB",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "proto": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./generated --grpc_out=./generated --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` -I ./protos ./protos/*.proto && grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./generated -I ./protos ./protos/*.proto",
+    "start": "npm run proto && node --loader ts-node/esm index.ts",
+    "client": "node client.example.js"
+  },
+  "type": "module",
+  "author": "Oludotun Longe",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.13",
+    "@grpc/proto-loader": "^0.7.10",
+    "mongodb": "^6.3.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^4.0.7",
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "grpc-tools": "^1.12.4",
+    "@types/cors": "^2.8.17",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20",
+    "@types/supertest": "^2.0.16",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.3"
+  }
+}
